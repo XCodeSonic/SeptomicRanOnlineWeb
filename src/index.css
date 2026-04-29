@@ -1,0 +1,130 @@
+@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;800;900&family=Share+Tech+Mono&display=swap');
+
+@theme {
+  --font-orbitron: 'Orbitron', sans-serif;
+  --font-mono: 'Share Tech Mono', monospace;
+  --color-neon-red: #ff003c;
+  --color-neon-cyan: #00f0ff;
+  --color-neon-yellow: #ffcc00;
+  --color-game-bg: #181818;
+}
+
+:root {
+  --red: #ff003c;
+  --cyan: #00f0ff;
+  --yellow: #ffcc00;
+  --bg: #181818;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--bg);
+  color: #fff;
+  font-family: 'Share Tech Mono', monospace;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 4px;
+}
+::-webkit-scrollbar-track {
+  background: #0a0a0a;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--red);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #cc0030;
+}
+
+/* Glitch animation for hero text */
+@keyframes glitch-1 {
+  0%, 100% { clip-path: inset(0 0 95% 0); transform: translate(-2px, 0); }
+  20% { clip-path: inset(30% 0 50% 0); transform: translate(2px, 0); }
+  40% { clip-path: inset(70% 0 10% 0); transform: translate(-1px, 0); }
+  60% { clip-path: inset(10% 0 80% 0); transform: translate(1px, 0); }
+  80% { clip-path: inset(50% 0 30% 0); transform: translate(-2px, 0); }
+}
+
+@keyframes glitch-2 {
+  0%, 100% { clip-path: inset(80% 0 0 0); transform: translate(2px, 0); color: var(--cyan); }
+  20% { clip-path: inset(0 0 70% 0); transform: translate(-2px, 0); }
+  40% { clip-path: inset(40% 0 40% 0); transform: translate(1px, 0); }
+  60% { clip-path: inset(60% 0 20% 0); transform: translate(-1px, 0); }
+  80% { clip-path: inset(20% 0 60% 0); transform: translate(2px, 0); color: var(--red); }
+}
+
+.glitch {
+  position: relative;
+}
+.glitch::before,
+.glitch::after {
+  content: attr(data-text);
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+}
+.glitch:hover::before {
+  opacity: 0.8;
+  animation: glitch-1 0.3s steps(2) infinite;
+  color: var(--cyan);
+}
+.glitch:hover::after {
+  opacity: 0.8;
+  animation: glitch-2 0.3s steps(2) infinite;
+  color: var(--red);
+}
+
+/* Neon text shadows */
+.neon-red {
+  text-shadow: 0 0 10px rgba(255, 0, 60, 0.8), 0 0 40px rgba(255, 0, 60, 0.4);
+}
+.neon-cyan {
+  text-shadow: 0 0 10px rgba(0, 240, 255, 0.8), 0 0 40px rgba(0, 240, 255, 0.4);
+}
+
+/* Scanlines overlay - subtle */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0, 0, 0, 0.03) 2px,
+    rgba(0, 0, 0, 0.03) 4px
+  );
+  pointer-events: none;
+  z-index: 9999;
+}
+
+/* Smooth page transitions */
+main {
+  animation: fadeIn 0.4s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Input number arrows hide */
+input[type='number']::-webkit-outer-spin-button,
+input[type='number']::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input[type='number'] {
+  -moz-appearance: textfield;
+}
