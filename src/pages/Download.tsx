@@ -228,7 +228,7 @@ export default function Download() {
               The {active.label} version is currently in development. Join our Discord to get notified when it launches.
             </p>
             <a
-              href="https://discord.com"
+              href="https://discord.gg/ee2ZVawmVs"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 mt-4 font-['Orbitron'] text-xs tracking-widest text-[#00f0ff] border border-[#00f0ff]/30 px-5 py-2 hover:bg-[#00f0ff]/10 transition-all duration-300"
